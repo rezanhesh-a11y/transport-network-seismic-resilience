@@ -1,0 +1,81 @@
+\chapter{Introduction}
+
+\section{Background and Motivation}
+Transportation systems form the backbone of modern society, facilitating the movement of people, goods, and services while fostering economic growth and social well-being. However, these systems are increasingly vulnerable to natural disasters, climate change, and anthropogenic disruptions, which significantly impact infrastructure reliability, mobility, and network resilience \cite{pescaroli2016}. Disruptions such as earthquakes, landslides, flooding, and infrastructure failures can lead to severe network disruptions, affecting millions of commuters, businesses, and emergency services \cite{gu2020, wu2021}.
+
+Recent disasters highlight the urgency of transport network resilience:
+\begin{itemize}
+    \item The 2008 Wenchuan earthquake in China triggered over 15,000 landslides, destroying highways and isolating entire regions \cite{tang2011}.
+    \item The 2018 Morandi Bridge collapse in Genoa, Italy, killed 43 people, left 600 homeless, and caused an economic disaster, disrupting urban mobility for years \cite{scozzese2019}.
+    \item The 2011 Tōhoku earthquake and tsunami in Japan severely damaged rail and road networks, demonstrating the cascading impacts of seismic hazards on transportation systems \cite{krausmann2013}.
+\end{itemize}
+
+\hyphenpenalty=1000
+\tolerance=1000
+\justify Given these challenges, resilience assessment of transportation networks has emerged as a crucial field of study. Resilient networks can withstand, absorb, and recover from shocks, ensuring continued connectivity between key locations before, during, and after disruptions \cite{yang2022}. This thesis develops a resilience assessment framework integrating graph-based network analysis, GIS spatial analysis, and transport simulation using PTV Visum.
+
+\section{Importance of Transport Resilience in Disaster Management}
+Critical infrastructure resilience is a key component of disaster management, influencing response times, recovery rates, and economic stability . Among all infrastructures, transportation systems are particularly vulnerable due to their interconnected nature and dependency on structural integrity \cite{gu2020}.
+
+A disruption in one transport link—such as a collapsed bridge or damaged highway—can trigger network-wide consequences, affecting:
+\begin{itemize}
+    \item Emergency response (delays in medical and rescue services).
+    \item Economic stability (increased cost of goods and logistics disruptions).
+    \item Public mobility (restricted access to essential services, workplaces, and homes).
+\end{itemize}
+For example, during Hurricane Katrina (2005) and Hurricane Sandy (2012) in the US, widespread flooding and road failures hindered relief efforts, demonstrating the importance of transport network adaptability in extreme weather events \cite{padgett2008}. Similarly, the Cumbria floods (2009) in the UK caused £34 million in road restoration costs due to bridge collapses \cite{cumbria2010}.
+
+Thus, it is essential to assess and enhance the resilience of transport networks, particularly in seismically active regions like Southern Italy, where seismic faults intersect major transportation corridors.
+
+\section{Research Gap and Challenges}
+Current research on transport resilience primarily focuses on either:
+\begin{enumerate}
+    \item Topological resilience – Evaluating network connectivity and redundancy through graph theory indicators \cite{wang2019}.
+    \item Functional resilience – Assessing real-time network performance, including travel time variations, congestion, and rerouting behavior \cite{bell1999}.
+\end{enumerate}
+However, studying these perspectives separately leads to incomplete resilience assessments. Traditional transport models often fail to integrate:
+\begin{itemize}
+    \item Land-use dependencies – Urban density, economic activity, and road accessibility.
+    \item Environmental hazards – Seismic risk zones, flood-prone areas, and terrain complexity.
+    \item Infrastructure stress factors – Road fatigue, bridge load capacity, and maintenance constraints.
+\end{itemize}
+To address these gaps, this thesis introduces a multi-layered resilience framework that integrates:
+\begin{itemize}
+    \item Graph-theory-based resilience metrics (Beta Index, Gamma Index, Betweenness Centrality, Clustering Coefficient).
+    \item GIS-based spatial risk modeling (earthquake-prone zones, flood-prone areas, critical infrastructure mapping).
+    \item Seismic scenario simulations using PTV Visum (travel time variations, route disruptions, network redundancy assessment).
+    \item "Augmented link" modeling approach – Incorporating land-use dependencies, infrastructure conditions, and traffic demand levels into resilience assessments \cite{postorino2025}.
+\end{itemize}
+
+\section{Research Objectives}
+This research aims to develop and apply a resilience assessment framework that:
+\begin{enumerate}
+    \item Evaluates seismic disruption impacts on transport network connectivity and mobility.
+    \item Identifies critical transport links using graph-based and GIS-based resilience indicators.
+    \item Assesses network redundancy and recovery capacity using the Redundancy Indicator metric.
+    \item Integrates land-use interactions into transport resilience models for enhanced disaster response planning.
+    \item Simulates post-disaster network performance under low-intensity (10\% link failure) and high-intensity (40\% link failure) seismic scenarios.
+\end{enumerate}
+
+\section{Research Questions}
+This thesis seeks to answer the following key research questions:
+\begin{enumerate}
+    \item How do seismic disruptions impact transport network connectivity and redundancy?
+    \item Which transport links and nodes are most critical for post-disaster mobility?
+    \item How do redundancy metrics (Beta, Gamma, Clustering Coefficient) evolve under disruptions?
+    \item How do land-use patterns influence network resilience and recovery strategies?
+    \item What resilience strategies can improve transport network adaptability in seismic-prone regions?
+\end{enumerate}
+
+\section{Significance of the Study}
+This research contributes to transport resilience analysis by:
+\begin{itemize}
+    \item Bridging the gap between topological and functional resilience.
+    \item Integrating land-use dependencies into resilience assessments.
+    \item Developing a GIS-based risk analysis framework for seismic disruptions.
+    \item Providing a decision-support system for urban planners and policymakers.
+\end{itemize}
+By combining transport modeling, spatial analysis, and graph-based metrics, this study offers a comprehensive methodology to enhance transport network resilience in disaster-prone areas.
+
+
+

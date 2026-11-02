@@ -1,0 +1,159 @@
+\documentclass[a4paper, 12pt, oneside]{report} % Fixed 13pt issue
+
+\bibliography{Bibliography} % Include the bibliography file
+\usepackage{lmodern} % Provides bold small caps font
+\linespread{1.5} % Line spacing
+\pagestyle{plain}
+\usepackage{geometry} % Page margins
+\geometry{a4paper, top=3cm, bottom=3cm, left=3cm, right=3cm, bindingoffset=5mm}
+
+\usepackage{graphicx}
+\graphicspath{{images/}{./}} % Ensure images are found
+
+\usepackage{multicol} % Multiple columns
+\usepackage{amsmath}
+\usepackage{ragged2e} % Text alignment
+\usepackage{minitoc} % Mini-tables of contents
+\usepackage[english]{babel} % Main language
+\usepackage{csquotes} % Fixes 'babel/polyglossia' warning
+\usepackage{ragged2e}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+\tikzstyle{process} = [rectangle, rounded corners=5pt, minimum width=3.5cm, minimum height=1cm, text centered, draw=blue!50!black, fill=blue!20]
+\tikzstyle{arrow} = [thick, ->, >=stealth]
+
+\usepackage{booktabs}
+
+
+
+\nomtcrule 
+\addto{\captionsenglish}{% Making babel aware of special titles
+  \renewcommand{\mtctitle}{Summary}
+}
+
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}  
+\addbibresource{Bibliography.bib}  % Ensure this matches your .bib filename
+
+
+\usepackage{comment}
+\usepackage{xpatch}
+\usepackage{blindtext}
+
+% Modify chapter headings to be centered
+\makeatletter
+\xpatchcmd{\@makeschapterhead}{%
+  \Huge \bfseries  #1\par\nobreak%
+}{%
+  \Huge \bfseries\centering #1\par\nobreak%
+}{\typeout{Patched makeschapterhead}}{\typeout{Patching of @makeschapterhead failed}}
+
+\xpatchcmd{\@makechapterhead}{%
+  \huge\bfseries \@chapapp\space \thechapter
+}{%
+  \huge\bfseries\centering \@chapapp\space \thechapter
+}{\typeout{Patched @makechapterhead}}{\typeout{Patching of @makechapterhead failed}}
+\makeatother
+
+\usepackage{fancyhdr}
+\usepackage[export]{adjustbox}
+\usepackage{hyperref} % Hyperlinks
+\hypersetup{
+    colorlinks=true,
+    citecolor=cyan,
+    linkcolor=black,
+    urlcolor=black,
+    pdftitle= Analysis of Indicators to Assess the Resilience of Transport Networks in an Interregional Context,
+    pdfauthor=Seyedreza Aghayarikordkandi,
+}
+
+\usepackage{booktabs} % Tables
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{lscape}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning}
+
+\hypersetup{
+    colorlinks=true,        % Disable colored links
+    linkcolor=black,        % Color of internal links (sections, etc.)
+    citecolor=black,        % Color of citations
+    filecolor=black,        % Color of file links
+    urlcolor=black          % Color of external links
+}
+
+\setcounter{secnumdepth}{4}
+% Document begins here
+\begin{document}
+
+% Title Page
+\begin{titlepage}
+\begin{center}
+    {\scshape\LARGE UNIVERSIT\`A DEGLI STUDI DI NAPOLI \ FEDERICO II \par}
+    \vspace{1cm}
+    \includegraphics[width=0.3\textwidth]{images/logo.jpg} \par
+    \vspace{0.7cm}
+    {\scshape\Large FACULTY OF ENGINEERING \par}
+    \vspace{0.5cm}
+    {\scshape\normalsize Master’s Degree in Transportation Engineering and Mobility \par}
+    \vspace{0.3cm}
+    {\scshape\small DEPARTMENT OF CIVIL, BUILDING AND ENVIRONMENTAL ENGINEERING \par}
+    \vspace{0.3cm}
+    
+    {\scshape\normalsize\bfseries Analysis of Indicators to Assess the Resilience of Transport Networks in an Interregional Context \par}
+    \vspace{0.5cm}
+\end{center}
+
+ \begin{minipage}{0.45\textwidth}
+    \raggedright
+    {\scshape\normalsize \textbf{Supervisor:}} \\
+    Prof. Luigi Pariota \\
+    {\scshape\normalsize \textbf{Co-supervisor:}} \\
+    Dr. Luca Di Costanzo
+    \end{minipage}%
+    \begin{minipage}{0.45\textwidth}
+    \raggedright
+    {\scshape\normalsize \textbf{Candidate:}} \\
+    Seyedreza Aghayarikordani \\
+    Student ID: P55000015
+    \end{minipage}
+
+\vfill
+
+% Bottom of the page
+\begin{center}
+    {\scshape\large ACADEMIC YEAR 2024/2025}
+\end{center}
+
+\end{titlepage}
+
+\begin{abstract}
+    \noindent The resilience of transport networks under seismic disturbances is a critical concern for ensuring regional connectivity, accessibility, and post-disaster recovery. This study analyzes the resilience of the Southern Italy transport network under multiple seismic fault scenarios, focusing on network centrality, connectivity indicators, and redundancy analysis to assess the impact of disruptions.
+
+    The methodology integrates network analysis and seismic hazard modeling to evaluate the vulnerability of critical links and nodes. Key indicators such as betweenness centrality, clustering coefficient, average degree, beta index, and gamma index provide insights into the pre- and post-disruption behavior of the network. Redundancy analysis further examines the extent to which travel time increases and zones become disconnected under varying seismic intensities. The study identifies the A16 motorway as a critical corridor, where disruptions significantly affect east-west connectivity, particularly impacting OD pairs between Campania and Puglia. Additionally, the findings highlight that high-intensity seismic events lead to severe network fragmentation, particularly in Benevento, Avellino, and Calabria, due to lower node density and limited alternative routes.
+
+    The results underscore the need for strategic resilience planning, including reinforcing major highways, developing alternative expressways, and implementing emergency rerouting strategies for OD pairs with low redundancy values. The study provides a comprehensive framework for evaluating transport network resilience, offering valuable insights for policymakers and urban planners to mitigate seismic risks and enhance regional connectivity in future disruptions.
+\end{abstract}
+
+\newpage 
+\dominitoc
+\tableofcontents
+
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+
+\input{Introduction.tex} 
+\input{Literature_review.tex} 
+\input{Methodology.tex} 
+\input{Case Study.tex}
+\input{Results and Discussion.tex}
+\input{Conclusion}
+
+\printbibliography
+\end{document}

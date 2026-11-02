@@ -1,0 +1,268 @@
+\chapter{Methodology}
+
+\section{Introduction}
+This methodology provides a structured framework for assessing the resilience and redundancy of transportation networks, particularly in response to disruptions caused by seismic events, extreme weather, or infrastructure failures. Unlike traditional vulnerability analyses that focus on accessibility reduction and travel demand shifts, this methodology emphasizes the ability of a transport network to absorb disruptions, provide alternative routes, and maintain functional connectivity under stress.
+
+The approach integrates graph theory indicators, redundancy metrics, and transport network modeling using PTV Visum and GIS tools to provide a comprehensive resilience assessment. This framework enables decision-makers to identify critical network weaknesses, evaluate alternative route availability, and propose infrastructure improvements aimed at enhancing overall system robustness.
+
+\section{Selection of Graph Theory Indicators for Network Performance Assessment}
+To quantitatively evaluate transport network resilience, a set of graph-based indicators is computed. These indicators assess connectivity, complexity, redundancy, and robustness, which are key factors in determining how well a network can function both in normal conditions and during disruptions.
+
+Graph-based analysis is essential for understanding how disruptions impact network performance, as it allows the identification of critical nodes, bridges, and road segments that may be prone to failure or congestion when alternative routes are limited. This methodology applies network indicators that characterize different aspects of network topology, including measures of centrality, clustering, connectivity, and redundancy, to evaluate the ability of a transport system to sustain efficient movement under varying conditions.
+
+By utilizing graph theory and network modeling, it is possible to determine how different failure scenarios affect overall system performance and identify locations where improvements such as additional road links, transit expansions, or adaptive traffic management strategies could enhance resilience. These quantitative assessments support a data-driven approach to transportation planning, ensuring that networks remain operational and accessible even in the face of disruptions.
+
+\subsection{Beta Indicator – Network Complexity}
+The beta indicator is a fundamental measure of network complexity, quantifying the structural intricacy of a transportation network by evaluating the ratio of links to nodes. This indicator provides insights into how interconnected a network is, influencing its ability to absorb disruptions and maintain operational efficiency during disturbances. A network with a higher beta value indicates a well-developed structure with multiple alternative routes available, reducing the impact of link failures and improving overall system resilience. Conversely, a lower beta value suggests a sparse network with fewer connections, making it more vulnerable to disruptions \cite{taylor2017}.
+
+The formula for the Beta Index is expressed as:
+
+\begin{equation}
+\beta = \frac{|A|}{|N|}
+\end{equation}
+
+where $|A|$ represents the total number of links (road segments, railways, or transit routes) in the network, and $|N|$ denotes the total number of nodes (intersections, terminals, or centroids).
+
+A higher beta value indicates a complex network with multiple paths, allowing better route choices and ensuring higher resilience against disruptions. Such networks provide increased redundancy, enabling efficient rerouting in cases of road failures or traffic congestion. A lower beta value signifies a simpler network with fewer connectivity options, making it more vulnerable to failures, congestion bottlenecks, and reduced accessibility during disruptions \cite{derrible2010}.
+
+For transportation networks in seismic-prone or disaster-affected regions, an adequate beta value is essential to maintaining accessibility and ensuring mobility for emergency response and recovery operations. A well-connected road network with a sufficiently high beta value can help reduce travel delays and enhance redundancy, making it easier to implement traffic detours during infrastructure failures \cite{taylor2017}.
+
+In the context of this research, evaluating the Beta Index will support the assessment of network redundancy in the study area, identifying locations where the network lacks alternative routes. This will help in proposing structural improvements to enhance connectivity, such as adding new roads, expanding existing corridors, or improving intersection designs.
+
+\subsection{Gamma Indicator – Network Connectivity (Planar Networks)}
+The gamma indicator is a critical metric for evaluating the degree of connectivity within a transportation network. It measures the extent to which the existing network structure approaches its theoretical maximum level of connectivity, providing insights into how efficiently the network can sustain disruptions while maintaining accessibility. In transportation planning, higher connectivity values indicate stronger redundancy, as multiple route options are available in case of blockages or failures \cite{taylor2017}.
+
+For planar networks, which include most road networks where intersections define connectivity, the maximum possible number of links is limited due to the physical constraints of infrastructure design. The gamma index for planar networks is formulated as:
+
+\begin{equation}
+\gamma = \frac{|A|}{3(|N| - 2)}, \quad \text{for } |N| \geq 3
+\end{equation}
+
+where \( |A| \) represents the actual number of links in the network, and \( |N| \) denotes the total number of nodes. The denominator \( 3(|N| - 2) \) accounts for the maximum possible number of links in a planar network, ensuring that crossings and junctions adhere to realistic transportation network structures \cite{derrible2010}.
+
+A higher gamma value reflects a well-connected network that provides multiple alternative travel routes, allowing efficient rerouting during disruptions. Such networks exhibit stronger resilience, minimizing the negative impacts of road closures and congestion by ensuring that travelers can access alternative pathways. A lower gamma value suggests a sparsely connected network with limited alternative routes, making it more prone to severe disruptions and congestion. Reduced connectivity in a network can lead to bottlenecks, higher travel times, and restricted accessibility, particularly in emergency situations \cite{taylor2017}.
+
+Assessing the gamma index in the study area will provide valuable insights into the level of network connectivity and its ability to sustain disruptions. By analyzing variations in connectivity across different road classifications, such as highways, arterial roads, and local streets, it will be possible to determine where network improvements are necessary to enhance redundancy. These improvements may include the construction of additional road links, the optimization of intersection layouts, or the implementation of adaptive traffic management strategies to reduce network vulnerability \cite{taylor2017}.
+
+In resilience analysis, the combination of the beta index and gamma index allows for a comprehensive evaluation of network robustness. While the beta index highlights the complexity of the network and its ability to provide multiple travel paths, the gamma index focuses on the overall connectivity, ensuring that these paths form a cohesive and redundant system. By incorporating these indicators into the methodology, it will be possible to develop targeted strategies for enhancing network resilience, particularly in areas exposed to natural hazards such as seismic activity \cite{derrible2010, taylor2017}.
+
+\subsection{Betweenness Centrality – Importance of Links and Nodes}
+Betweenness centrality is a fundamental measure used to identify the most critical components of a transportation network. It quantifies the extent to which a node or link is utilized in the shortest paths across the network. The importance of this metric lies in its ability to highlight key transfer points, bottlenecks, and essential routes, making it a crucial tool for evaluating the robustness and vulnerability of a transportation system \cite{taylor2017}.
+
+Betweenness centrality plays a pivotal role in network resilience analysis, as it helps identify nodes and links that, if disrupted, could significantly impact travel efficiency and accessibility. Unlike closeness centrality, which measures the proximity of a node to all other nodes, betweenness centrality focuses on the function of a node or link in enabling connectivity between different parts of the network. This distinction makes it particularly valuable in assessing network vulnerability to failures, congestion, and disruptions.
+\subsubsection{Betweenness Centrality for Nodes}
+Node betweenness centrality evaluates the extent to which a particular node serves as a bridge between different parts of the network. A node with a high betweenness centrality is frequently traversed in the shortest paths between various origins and destinations.
+
+The formula for node betweenness centrality is expressed as:
+
+\begin{equation}
+C_{B_i} = \frac{1}{(|N| - 1) (|N| - 2)} \sum_{h,d \in N; h \neq d} \frac{n_{hd}(i)}{n_{hd}}
+\end{equation}
+
+where \( n_{hd} \) represents the total number of shortest paths between nodes \( h \) and \( d \), \( n_{hd}(i) \) denotes the number of these shortest paths that pass through node \( i \), and \( |N| \) is the total number of nodes in the network.
+
+A node with high betweenness centrality functions as a major transfer point in the network. These nodes tend to be found at transportation hubs, intersections, and central transfer stations, where many travelers must pass through to reach their destinations. If such nodes are removed or experience congestion, the network’s overall efficiency declines, and alternative paths may be less optimal or significantly longer.
+
+In urban transportation networks, railway stations, major bus interchanges, and key highway intersections often exhibit high betweenness values, highlighting their critical role in network connectivity. The failure of these nodes could lead to network fragmentation, requiring travelers to take significantly longer detours, thereby increasing travel time and congestion.
+
+Conversely, nodes with low betweenness centrality are less critical to shortest path movements. These nodes are typically located at the periphery of the network, where disruptions have minimal impact on overall connectivity. While such nodes contribute to the local structure of the network, their removal does not significantly affect global efficiency.
+
+Betweenness centrality is particularly important in the analysis of emergency response networks. Identifying nodes with high betweenness centrality allows decision-makers to prioritize these locations for infrastructure reinforcement, ensuring continued functionality during emergencies or disruptions.
+
+\subsubsection{Betweenness Centrality for Links}
+In addition to nodes, links, including road segments, railway lines, and transit routes, also exhibit betweenness centrality. A link with a high betweenness centrality is frequently used in shortest paths, meaning that it plays a crucial role in network connectivity and transport flow.
+
+The formula for link betweenness centrality is:
+
+\begin{equation}
+C_{B_{a_{ij}}} = \frac{1}{(|N| - 1) (|N| - 2)} \sum_{h,d \in N; h \neq d} \frac{n_{hd}(a_{ij})}{n_{hd}}
+\end{equation}
+
+where \( n_{hd} \) represents the total number of shortest paths between nodes \( h \) and \( d \), and \( n_{hd}(a_{ij}) \) denotes the number of these shortest paths that pass through link \( a_{ij} \).
+
+A link with high betweenness centrality serves as a critical corridor within the network. These links are typically major highways, arterial roads, or main transit lines, where a large volume of traffic moves between different areas. If these links experience failures, congestion, or blockages, alternative routes may be significantly longer or incapable of handling the same volume of traffic, leading to widespread disruptions in travel efficiency.
+
+Highway systems often demonstrate clear cases of high betweenness links, particularly at toll plazas, bridges, and major urban expressways. In public transit networks, key subway lines, bus rapid transit corridors, and railway routes often exhibit high link betweenness, highlighting their importance in maintaining mobility across urban areas.
+
+Conversely, low betweenness links are secondary roads or local transit lines that are not frequently used for shortest path connections. While these links contribute to local mobility, their removal or failure would not have a significant impact on the broader transportation network.
+
+\subsubsection{Implications for Network Resilience and Redundancy}
+The analysis of betweenness centrality is crucial in assessing transportation network resilience. Nodes and links with high betweenness values are particularly susceptible to congestion, disruptions, and failures, making them priority locations for maintenance, expansion, and alternative routing strategies.
+
+A network with evenly distributed betweenness centrality values tends to be more resilient, as it ensures that no single node or link dominates shortest path flows. In contrast, a network with a few highly central nodes or links is more vulnerable to disruptions since failures in these components can cause severe congestion and system-wide inefficiencies.
+
+Urban planners and transportation engineers use betweenness centrality to:
+
+\begin{itemize}
+    \item Identify key bottlenecks where congestion is likely to occur.
+    \item Prioritize infrastructure investments in areas that are critical for network connectivity.
+    \item Improve network redundancy by developing alternative routes and bypasses to reduce dependency on highly central nodes and links.
+    \item Enhance emergency preparedness by ensuring that key corridors remain operational during disasters.
+\end{itemize}
+
+In this study, betweenness centrality will be used to evaluate the critical nodes and links within the transportation network, determining which components require reinforcement, alternative routing solutions, or priority maintenance to improve overall resilience. By identifying key elements in the network, transportation planners can implement targeted interventions to reduce vulnerability and enhance long-term system stability.
+\section{Redundancy Indicator – Network Resilience Based on Travel Time}
+The redundancy indicator evaluates the capacity of a transportation network to maintain functionality by providing alternative travel routes during disruptions. This metric is particularly useful for assessing network resilience under conditions such as seismic fault impacts, road closures, or infrastructure failures. By measuring the relative change in travel times before and after a disruption, the redundancy indicator quantifies the ability of the network to absorb shocks and sustain accessibility.
+
+The redundancy indicator is calculated as:
+
+\begin{equation}
+\text{Redundancy Indicator} = \frac{\text{TravelTime}_{\text{before}}}{\text{TravelTime}_{\text{after}}}
+\end{equation}
+
+where \( \text{TravelTime}_{\text{before}} \) represents the shortest path travel time in normal conditions, and \( \text{TravelTime}_{\text{after}} \) is the shortest path travel time after a disruption occurs \cite{taylor2017}.
+
+A redundancy indicator value close to one suggests that the network is highly resilient, as travel times remain largely unaffected by disruptions. This indicates that multiple alternative routes exist, allowing for seamless rerouting when certain links or nodes fail. Networks with high redundancy values are typically well-integrated, with multiple connections between key locations that ensure continued functionality despite localized failures.
+
+A redundancy indicator value of less than one indicates a network with limited redundancy, where disruptions lead to significant increases in travel times. This suggests that alternative routes are either scarce or less efficient, causing detours that result in longer journeys. Networks exhibiting such characteristics are more vulnerable to disruptions, particularly in areas where critical links serve as primary conduits for travel.
+
+A redundancy indicator significantly less than one reflects a highly disrupted network, where travel times increase drastically due to the failure of key infrastructure components. In such cases, alternative routes may be insufficient or entirely unavailable, leading to severe accessibility challenges and network fragmentation.
+
+The redundancy indicator is an essential tool for identifying weak points in a transportation system and guiding infrastructure improvements. In this study, it will be used to analyze how seismic fault impacts and road closures affect travel times, helping to determine where enhancements such as additional road links, improved traffic management strategies, or network reinforcements are required to enhance overall resilience.
+
+\section{Average Degree (CD Indicator)}
+The average degree of a transportation network quantifies the average number of direct connections per node, reflecting the network’s overall connectivity and its ability to facilitate movement. It provides insight into the extent of interconnectivity within the network by measuring how well nodes are linked to one another. A higher average degree suggests a more robust and interconnected network, while a lower average degree indicates a sparse network structure, which can make certain areas more vulnerable to disruptions \cite{taylor2017}.
+
+The degree of a node represents the number of direct connections a node has with other nodes in the network. This is calculated by summing the total number of links incident to a node. The average degree is then computed as the mean degree across all nodes in the network.
+
+The formula for the average degree is given by:
+
+\begin{equation}
+C^D = \frac{1}{|N|} \sum_{i=1}^{|N|} k_i
+\end{equation}
+
+where \( |N| \) represents the total number of nodes in the network, \( k_i \) is the degree of node \( i \), and \( \delta_{ij} \) represents the connectivity between nodes \( i \) and \( j \). The number of links connected to a node is calculated as:
+
+\begin{equation}
+k_i = \sum_{j \neq i} \delta_{ij}
+\end{equation}
+
+which represents the sum of the incidence matrix row for node \( i \).
+
+A higher average degree indicates a network that is well connected with multiple alternative routes available, improving overall redundancy and resilience against disruptions. Such a network structure ensures that traffic can be efficiently rerouted in case of link failures, reducing congestion and travel time delays. Dense urban transportation networks, including road grids and multimodal transit systems, tend to exhibit higher average degree values, ensuring that alternative paths exist even if certain roads or transit lines experience congestion or closure.
+
+A lower average degree suggests that the network has fewer direct connections, leading to a structure with limited alternative routes. In this type of network, the failure of a single link or node can significantly impact accessibility, making the network more vulnerable to disruptions. Rural road networks and radial transport systems often exhibit lower average degree values, where connectivity depends on a few major routes. These networks are more susceptible to bottlenecks and service interruptions, as limited redundancy means that failures in key nodes or links can lead to significant accessibility challenges.
+
+The degree of a node influences the availability of alternative routes in case of congestion or disruptions. Nodes with higher degrees tend to function as important hubs, providing greater flexibility in routing, while nodes with lower degrees are more dependent on a limited number of connections.
+
+\subsection{Path Classification and Its Role in Network Connectivity}
+The concept of network paths is essential in understanding how degree distribution affects travel efficiency. Different classifications of network paths help contextualize the role of degree in transportation network performance.
+
+\begin{itemize}
+    \item \textbf{Cyclical Path}: Involves loops where the same link is used multiple times. These paths are generally not relevant for transportation network analysis, except in specific cases such as drivers searching for parking in urban environments.
+    
+    \item \textbf{Efficient Path}: A path where each node or link brings the traveler closer to the destination, ensuring that redundant movements are minimized. Networks with higher degrees facilitate more efficient path selection by offering multiple direct connections between nodes.
+    
+    \item \textbf{Minimum-Cost Path}: The shortest or least expensive route between two nodes. In transportation network analysis, identifying minimum-cost paths is essential for traffic assignment modeling and network optimization. Networks with a higher degree of connectivity tend to offer multiple minimum-cost paths, increasing overall system efficiency.
+\end{itemize}
+
+Transportation network analysis often focuses on identifying optimal paths and alternatives, particularly in traffic assignment models, emergency response routing, and congestion management. Probabilistic path assignment methods \cite{dial1971, taylor1979} and multi-path search algorithms \cite{chen2016} leverage degree distribution data to optimize routing decisions.
+\subsection{Implications for Network Resilience and Redundancy}
+A high average degree is associated with greater network robustness, allowing travelers to switch routes in case of link failures or congestion. Networks with high degree values have increased redundancy, ensuring that traffic can be reallocated effectively when disruptions occur. This property is crucial for emergency response planning, where alternative routes are essential for maintaining accessibility.
+
+A low average degree is indicative of networks that may lack sufficient redundancy, making them more prone to accessibility disruptions when key nodes or links fail. In such cases, network expansion strategies, such as adding new road connections, improving transit linkages, or developing bypass routes, are necessary to strengthen overall resilience.
+
+The degree distribution across the network also plays a crucial role in determining vulnerability. Networks with a few highly connected nodes and many low-degree nodes tend to exhibit a hub-and-spoke pattern, which can lead to significant service disruptions if the highly connected hubs fail. In contrast, networks with a more even degree distribution tend to be less susceptible to major disruptions, as no single node is overwhelmingly critical to network connectivity.
+
+In this study, the average degree indicator will be used to assess the structural connectivity and redundancy of the transportation network in the study area. By analyzing degree values across different parts of the network, it will be possible to identify weakly connected areas and propose interventions to improve network resilience. This may include increasing road density, expanding public transit links, or enhancing multimodal connectivity to ensure a more robust and redundant transport system.
+
+\section{Clustering Coefficient – Evaluating Local Connectivity}
+The clustering coefficient is a key measure in the analysis of transportation network connectivity, providing insights into the local and global structure of the network. It quantifies how well-connected a node’s neighboring nodes are to each other, influencing network resilience, redundancy, and efficiency in traffic flow. This metric is particularly relevant in understanding how disruptions in one part of the network might propagate through the system and whether the network can sustain localized failures without severe consequences.
+
+Two main types of clustering coefficients are considered: the \textit{local clustering coefficient}, which assesses the connectivity of individual nodes, and the \textit{global clustering coefficient}, which evaluates overall network clustering. These coefficients are essential in determining whether a transportation network follows a random structure, a scale-free structure, or exhibits small-world properties, all of which have implications for network resilience \cite{taylor2017}.
+
+\subsection{Local Clustering Coefficient}
+The local clustering coefficient measures the probability that two nodes connected to a common node are also directly connected to each other. It evaluates the density of local linkages within a node’s neighborhood, providing insight into localized network redundancy and connectivity.
+
+For a given node \( i \), its neighborhood consists of all other nodes directly connected to it via a physical link. If node \( i \) has \( k_i \) neighboring nodes, the maximum number of connections that could exist between these neighbors in a planar network follows the structure presented by Derrible and Kennedy (2010). The local clustering coefficient is calculated as:
+
+\begin{equation}
+C_i = \frac{k_i}{3(k_i - 2)}, \quad \text{if } k_i \geq 3
+\end{equation}
+
+where \( k_i \) represents the number of immediate neighboring nodes connected to node \( i \). The denominator \( 3(k_i - 2) \) accounts for the maximum possible connections between neighboring nodes in a planar network.
+
+The clustering coefficient is only defined for nodes with at least three neighbors, since a node with fewer than three connections cannot form a triangle, which is a fundamental unit of clustering.
+
+A high local clustering coefficient suggests that the neighbors of a given node are densely connected, which enhances localized redundancy and robustness. In such networks, alternative pathways exist, reducing the impact of localized disruptions such as road closures or transit delays. A low local clustering coefficient indicates sparse local connectivity, meaning that the removal of a node may significantly impact accessibility within that region.
+
+In transportation networks, urban grids and well-developed metro systems often exhibit higher local clustering, allowing travelers to shift to alternative routes in case of disruptions. Highway networks and rural road systems, in contrast, tend to have lower local clustering, making them more susceptible to disruptions since alternative paths may not be readily available \cite{taylor2017}.
+
+\subsection{Global Clustering Coefficient}
+The global clustering coefficient represents the overall tendency of a network to form clusters, providing a measure of how well nodes within the system are interconnected on a broader scale. It is calculated as the average of all local clustering coefficients across the network:
+
+\begin{equation}
+CC = \frac{1}{|N|} \sum_{i} C_i
+\end{equation}
+
+where \( |N| \) represents the total number of nodes in the network and \( C_i \) is the local clustering coefficient for node \( i \).
+
+A high global clustering coefficient indicates that, on average, nodes within the network tend to form well-connected clusters, improving network resilience and redundancy. This ensures that even if some links fail, the network remains connected through alternative routes. A low global clustering coefficient suggests that the network is more fragmented, meaning that failures in critical links can lead to significant disruptions in accessibility and mobility.
+\subsection{Small-World Properties and Transportation Resilience}
+The clustering coefficient is closely related to the small-world property of networks. A small-world network is characterized by high clustering and short average path lengths, meaning that most nodes can be reached from every other node via a small number of connections.
+
+The small-world property is mathematically expressed as:
+
+\begin{equation}
+L = b \cdot \log_e(|N|)
+\end{equation}
+
+where \( L \) is the average shortest path length between nodes in the network, \( |N| \) is the total number of nodes in the system, and \( b \) is a constant specific to the network.
+
+Networks with small-world properties enhance transportation efficiency, as most locations remain accessible via relatively few connections. In public transit and road networks, small-world characteristics ensure that alternative routes exist, reducing congestion and improving redundancy.
+
+A transportation network that exhibits high clustering and short average path lengths is more resilient to disruptions, as users can easily navigate alternative routes in case of link failures. Conversely, networks with low clustering and long average path lengths are more susceptible to major disruptions, as failures in critical links may cause isolation of entire network segments \cite{taylor2017}.
+
+\subsection{Implications for Transportation Network Resilience}
+Evaluating both local and global clustering coefficients provides insights into the redundancy and robustness of transportation networks. A high clustering coefficient at both the local and global levels suggests that the network has redundant pathways, allowing for efficient rerouting in case of failures. Localized disruptions, such as street closures, have minimal impact on overall network performance. The system can absorb congestion more effectively, as multiple alternative paths exist.
+
+A low clustering coefficient, particularly at the global level, indicates that the network is highly dependent on key connections, meaning that disruptions in critical links could severely affect accessibility. Alternative routes may not be readily available, increasing congestion and leading to longer travel times in the event of network disruptions.
+
+In the context of this research, clustering coefficients will be used to assess network resilience and redundancy in the study area. By analyzing the clustering properties of different road classes, transit corridors, and urban layouts, it will be possible to identify areas with strong connectivity and regions requiring structural improvements. Enhancements such as network densification, additional road links, or improved transit connectivity could be proposed to increase redundancy and enhance overall system resilience.
+
+\section{Demand Matrices, Skim Matrices, and Private Transport Assignment Calculation}
+To effectively compute transport network indicators, it is necessary to establish demand matrices that represent travel demand between different zones. A demand matrix is a fundamental component of transport modeling, defining the number of trips between origin and destination zones. These matrices enable the simulation of traffic flow, the computation of shortest paths, and the assessment of network resilience by quantifying how demand is distributed across the transport system.
+
+In transport networks, each zone is assigned a centroid node, which acts as the starting or ending point for trips. The connectivity between these centroids allows for a structured representation of travel demand, facilitating a systematic evaluation of network behavior under normal and disrupted conditions. The total number of origin-destination (OD) pairs in a network with \( N \) zones is given by:
+
+\begin{equation}
+\text{Total OD pairs} = N \times (N - 1)
+\end{equation}
+
+In the case of this study, with 778 zones, the total number of OD pairs amounts to 604,506, indicating the number of possible connections across the transport network.
+
+Once the demand matrix is established, the next step involves computing shortest paths between OD pairs. This is accomplished using shortest path algorithms such as Dijkstra’s algorithm, which identifies the minimum-cost path between nodes based on cumulative travel time or distance. By determining the shortest paths across all OD pairs, it is possible to analyze the overall connectivity and accessibility of the transport network.
+
+To model the distribution of trips across the network, the \textit{User Equilibrium} (UE) method is applied for private transport assignment in PTV Visum. User Equilibrium assumes that all travelers select the route that minimizes their individual travel time, resulting in a stable state where no traveler can improve their travel time by unilaterally switching routes. This assignment method provides a realistic representation of how traffic is distributed across the network, accounting for congestion effects and capacity constraints.
+
+In addition to demand matrices, skim matrices were generated to compute travel-related costs between OD pairs. A skim matrix stores values such as travel time before and after disruptions, enabling a comparative analysis of network performance under different conditions. These matrices are essential for computing the redundancy indicator, as they allow for an evaluation of how much travel time increases due to disruptions. By analyzing changes in travel time across the network, it is possible to assess the ability of the transport system to provide alternative routes and maintain functional connectivity during disruptive events \cite{ortuzar2011}.
+
+Following the assignment process, key network indicators are extracted to assess transport network resilience. Link usage count measures the frequency with which each road segment is used across all shortest paths, while node usage count tracks the number of times each node is traversed in shortest path routes. These counts serve as the foundation for computing network resilience indicators, including the beta index, gamma index, clustering coefficient, betweenness centrality, and redundancy indicator. By analyzing these indicators, it is possible to evaluate the network's ability to maintain connectivity, adapt to disruptions, and sustain transport functionality under varying conditions.
+
+\section{Framework (Flowchart)}
+\begin{figure}[H]
+\centering
+{\includegraphics[width=.8\textwidth]{images/chart.png}}
+    \caption{Methodology Flow Chart }
+    \label{fig:modelvalidation}
+\end{figure}
+
+\subsection{Key Methodology Steps}
+\textbf{Data Collection:}  
+\justify Road network and seismic hazard data collected.
+
+\textbf{Supply Model Development:}  
+\justify Supply model calibrated by adjusting free-flow speeds.
+
+\textbf{Seismic Scenario Modeling:}  
+\justify Earthquake scenarios simulated with 8 km (low intensity) and 15 km (high intensity) buffer zones.
+
+\textbf{Network Indicator Computation:}  
+\justify Topological and flow-based indicators computed (e.g., Betweenness Centrality, Redundancy).
+
+\textbf{The Resilience Assessment is based on:}  
+\justify Free-flow travel time (uncongested network).  
+\justify Shortest path analysis for link usage between origin-destination (OD) pairs.
+
+\textbf{Result Interpretation:}  
+\justify Analysis of indicator changes and regional vulnerability under each scenario.
